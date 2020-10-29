@@ -12,17 +12,14 @@ int readcount;
 
 void* writer(void* params) {
   while (1) {
-
     sem_wait(&wrt);
     printf("\nwrite\n"); /*writing*/
     sem_post(&wrt);
-
   }
 }
 
 void* reader(void* params) {
   while (1) {
-
     sem_wait(&mutex);
     readcount++;
     if (readcount == 1) sem_wait(&wrt);
@@ -34,7 +31,6 @@ void* reader(void* params) {
     readcount--;
     if (readcount == 0) sem_post(&wrt);
     sem_post(&mutex);
-
   }
 }
 
