@@ -49,26 +49,19 @@ void* MSort(void* params) {
   pthread_join(pid_r, NULL);
 
   Merge(S, low, mid, high);
+  return NULL;
 }
 
 int main() {
-  clock_t t1 = clock();
-  int a[1000], b[1000];
-  for (int i = 0; i < 1000; ++i) a[i] = b[i] = rand() % 10000;
+  int a[1000];
+  for (int i = 0; i < 1000; ++i) a[i] = rand() % 3000;
 
   MSortParams msp1 = {a, 0, sizeof(a) / sizeof(int) - 1};
-
   pthread_t pid;
   pthread_create(&pid, NULL, MSort, &msp1);
   pthread_join(pid, NULL);
 
-  // for (int i = 0; i < sizeof(a) / sizeof(int); ++i) {
-  //   printf("%d\n", a[i]);
-  // }
-  printf("t1 = %ld\n", clock() - t1);
-
-  clock_t t2;
-  MSortParams msp2 = {b, 0, sizeof(b) / sizeof(int) - 1};
-  MSort(&msp2);
-  printf("t2 = %ld\n", clock() - t2);
+  for (int i = 0; i < sizeof(a) / sizeof(int); ++i) {
+    printf("%d\n", a[i]);
+  }
 }
