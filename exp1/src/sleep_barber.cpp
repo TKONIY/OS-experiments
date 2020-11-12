@@ -88,13 +88,13 @@ void MaleCustomer() {
       }                          // else 出bug了有负数了
     }
 
-    barbered("男性");
     monitor.unlock();
+    barbered("男性");
 
   } else {  //不留了, 溜
 
-    leave("男性");
     monitor.unlock();
+    leave("男性");
   }
 }
 
@@ -120,12 +120,12 @@ void FemaleCustomer() {
       n_both_barber_notify--;
     }
 
-    barbered("女性");
     monitor.unlock();
+    barbered("女性");
 
   } else {
-    leave("女性");
     monitor.unlock();
+    leave("女性");
   }
 }
 
@@ -145,8 +145,8 @@ void MaleBarber() {
       n_male_notify--;
     }
 
-    barber("男性理发师");
     monitor.unlock();
+    barber("男性理发师");
   }
 }
 
@@ -174,8 +174,8 @@ void BothBarber() {
       }
     }
 
-    barber("全能理发师");
     monitor.unlock();
+    barber("全能理发师");
   }
 }
 
